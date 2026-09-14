@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>AirPulse AQI - Real-Time Air Quality & Health</title>
+    <meta name="description" content="Live location-based Air Quality Index (AQI), PM2.5 & PM10 pollutant metrics, health advisories, hourly smog forecasts, and AdMob-compliant mobile experience." />
+    <meta name="keywords" content="Air Quality Index, AQI live, PM2.5 monitor, current location air quality, smog forecast, EPA AQI scale, particulate matter, health advisory, AdMob compliant, air pollution app" />
+    <meta name="author" content="AirPulse Environmental Science" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://airpulse-aqi.app" />
+
+    <!-- Open Graph / Social Sharing -->
+    <meta property="og:title" content="AirPulse AQI - Real-Time Air Quality & Health" />
+    <meta property="og:description" content="Live location-based Air Quality Index (AQI), PM2.5 & PM10 pollutant metrics, health advisories, hourly smog forecasts, and AdMob-compliant mobile experience." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://airpulse-aqi.app" />
+    <meta property="og:image" content="/pwa-512x512.png" />
+    <meta property="og:site_name" content="AirPulse AQI" />
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="AirPulse AQI - Real-Time Air Quality & Health" />
+    <meta name="twitter:description" content="Live location-based Air Quality Index (AQI), PM2.5 & PM10 pollutant metrics, health advisories, hourly smog forecasts, and AdMob-compliant mobile experience." />
+    <meta name="twitter:image" content="/pwa-512x512.png" />
+
+    <!-- PWA & Android / Mobile Specific Meta Tags -->
+    <meta name="theme-color" content="#0f172a" />
+    <meta name="application-name" content="AirPulse AQI" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="AirPulse AQI" />
+    <link rel="icon" type="image/svg+xml" href="/icon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+
+    <!-- High SEO: JSON-LD Structured Data (WebApplication + FAQPage) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebApplication",
+          "@id": "https://airpulse-aqi.app/#app",
+          "name": "AirPulse AQI",
+          "applicationCategory": "WeatherApplication",
+          "operatingSystem": "Android, Web, iOS",
+          "browserRequirements": "Requires JavaScript. Requires HTML5 Geolocation.",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          },
+          "description": "Comprehensive real-time Air Quality Index (AQI) monitoring based on user GPS location, featuring PM2.5, PM10, Ozone, NO2 metrics, respiratory health advisories, and AdMob compliance standards."
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What is the Air Quality Index (AQI) and how is it calculated?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "The Air Quality Index (AQI) is a standardized scale developed by the US Environmental Protection Agency (EPA) ranging from 0 to 500. It translates complex atmospheric measurements of five major criteria air pollutants—ground-level ozone, particulate matter (PM2.5 and PM10), carbon monoxide, sulfur dioxide, and nitrogen dioxide—into a straightforward number and color-coded health severity category."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What is PM2.5 and why is it dangerous for human health?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "PM2.5 refers to fine inhalable particles with diameters 2.5 micrometers or smaller (approximately 30 times thinner than a human hair). Because of their microscopic size, PM2.5 particles bypass the nasal passages and penetrate deep into pulmonary alveoli and enter the bloodstream, causing acute inflammation, asthma exacerbations, and increased cardiovascular risks."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How does AirPulse detect my current location for AQI data?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "AirPulse utilizes high-precision W3C HTML5 Geolocation with the user's explicit consent to retrieve latitude and longitude coordinates. These coordinates query environmental monitoring networks and satellite-calibrated dispersion models via Open-Meteo to deliver hyper-local particulate matter and atmospheric indices without sharing private data."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How does this app adhere to Google AdMob company policies?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "The application complies strictly with Google AdMob publisher guidelines by enforcing clear 'Ad'/'Sponsored' labeling, maintaining safe margins to avoid accidental clicks, avoiding overlapping content, providing user-consented rewarded formats, and adhering to Coalition for Better Ads standards."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+  </head>
+  <body class="bg-slate-950 text-slate-100 antialiased selection:bg-emerald-500/30 selection:text-emerald-300">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js').catch((err) => {
+            console.log('SW registration note:', err);
+          });
+        });
+      }
+    </script>
+  </body>
+</html>
+

@@ -1,0 +1,6 @@
+{
+  "name": "AirPulse AQI - Real-Time Air Quality & Health",
+  "description": "Live location-based Air Quality Index (AQI), PM2.5 & PM10 pollutant metrics, health advisories, hourly smog forecasts, and AdMob-compliant mobile experience.",
+  "requestFramePermissions": ["geolocation"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
