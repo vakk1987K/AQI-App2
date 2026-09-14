@@ -1,8 +1,8 @@
-[{
-      "relation": ["delegate_permission/common.handle_all_urls"],
-      "target": {
-        "namespace": "android_app",
-        "package_name": "app.vercel.aqi_app2.twa",
-        "sha256_cert_fingerprints": ["DD:1F:70:DD:41:1D:DA:16:10:21:92:5F:22:52:69:B7:0F:4D:EA:FC:F8:29:02:84:BF:39:65:32:B4:96:23:81"]
-      }
-    }]
+{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "app.vercel.aqi_app2.twa",
+    "sha256_cert_fingerprints": ["DD:1F:70:DD:41:1D:DA:16:10:21:92:5F:22:52:69:B7:0F:4D:EA:FC:F8:29:02:84:BF:39:65:32:B4:96:23:81"]
+  }
+}
