@@ -9,14 +9,10 @@ import { Calendar, Sparkles, Lock } from 'lucide-react';
 
 interface DailyForecastViewProps {
   dailyForecast: DailyForecastItem[];
-  isExtendedUnlocked: boolean;
-  onUnlockExtended: () => void;
 }
 
 export const DailyForecastView: React.FC<DailyForecastViewProps> = ({
   dailyForecast,
-  isExtendedUnlocked,
-  onUnlockExtended,
 }) => {
   return (
     <div className="rounded-2xl bg-slate-900/80 border border-slate-800/90 p-4 shadow-sm space-y-3">
@@ -27,15 +23,6 @@ export const DailyForecastView: React.FC<DailyForecastViewProps> = ({
             7-Day Air Quality Outlook
           </h3>
         </div>
-        {!isExtendedUnlocked && (
-          <button
-            onClick={onUnlockExtended}
-            className="flex items-center gap-1 text-[11px] font-semibold text-emerald-400 hover:text-emerald-300 transition bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20"
-          >
-            <Sparkles className="w-3 h-3" />
-            <span>Unlock Extended Models</span>
-          </button>
-        )}
       </div>
 
       <div className="space-y-2">
@@ -73,28 +60,6 @@ export const DailyForecastView: React.FC<DailyForecastViewProps> = ({
           </div>
         ))}
       </div>
-
-      {!isExtendedUnlocked && (
-        <div className="p-3 rounded-xl bg-gradient-to-r from-emerald-950/40 to-slate-900 border border-emerald-500/30 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <Lock className="w-4 h-4 text-emerald-400 shrink-0" />
-            <div>
-              <p className="text-xs font-bold text-slate-200">
-                Detailed Aerosol & Chemical Wind Dispersion
-              </p>
-              <p className="text-[10px] text-slate-400">
-                Watch a short sponsor message to activate full 7-day hourly breakdown.
-              </p>
-            </div>
-          </div>
-          <button
-            onClick={onUnlockExtended}
-            className="shrink-0 px-3 py-1.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs shadow transition-colors"
-          >
-            Unlock
-          </button>
-        </div>
-      )}
     </div>
   );
 };

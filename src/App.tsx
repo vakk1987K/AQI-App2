@@ -20,19 +20,12 @@ import { HourlyTrendChart } from './components/HourlyTrendChart';
 import { DailyForecastView } from './components/DailyForecastView';
 import { HealthRecommendations } from './components/HealthRecommendations';
 import { LocationSelectorModal } from './components/LocationSelectorModal';
-import { AdMobBanner } from './components/AdMobBanner';
-import { AdMobNativeCard } from './components/AdMobNativeCard';
-import { AdMobInterstitial } from './components/AdMobInterstitial';
-import { AdMobRewarded } from './components/AdMobRewarded';
-import { AdMobPolicyInspector } from './components/AdMobPolicyInspector';
 import { SeoEducationHub } from './components/SeoEducationHub';
 import { PWAInstallPrompt } from './components/PWAInstallPrompt';
 import { AndroidFrame } from './components/AndroidFrame';
 
 import {
-  MapPin,
   RefreshCw,
-  ShieldCheck,
   Compass,
   Calendar,
   HeartPulse,
@@ -45,7 +38,6 @@ import {
   Sun,
   AlertCircle,
   Loader2,
-  Share2,
 } from 'lucide-react';
 
 export default function App() {
@@ -62,10 +54,6 @@ export default function App() {
 
   // Modals & Sheets
   const [isLocationModalOpen, setIsLocationModalOpen] = useState(false);
-  const [isPolicyInspectorOpen, setIsPolicyInspectorOpen] = useState(false);
-  const [isInterstitialOpen, setIsInterstitialOpen] = useState(false);
-  const [isRewardedOpen, setIsRewardedOpen] = useState(false);
-  const [isExtendedUnlocked, setIsExtendedUnlocked] = useState(false);
 
   // Active Android Navigation Tab
   const [activeTab, setActiveTab] = useState<'live' | 'forecast' | 'health' | 'learn'>('live');
@@ -196,17 +184,8 @@ export default function App() {
               </div>
             </button>
 
-            {/* Quick Actions: Policy Inspector, Frame Toggle & Refresh */}
+            {/* Quick Actions: Frame Toggle & Refresh */}
             <div className="flex items-center gap-1.5">
-              <button
-                onClick={() => setIsPolicyInspectorOpen(true)}
-                className="p-2 rounded-xl bg-slate-900/80 hover:bg-slate-800 text-emerald-400 border border-slate-800 transition active:scale-90"
-                title="AdMob Policy Inspector (Audit Verification)"
-                aria-label="AdMob Policy Audit"
-              >
-                <ShieldCheck className="w-4 h-4" />
-              </button>
-
               <button
                 onClick={() => setIsDesktopFrameActive(!isDesktopFrameActive)}
                 className="hidden sm:flex p-2 rounded-xl bg-slate-900/80 hover:bg-slate-800 text-slate-300 border border-slate-800 transition"
@@ -306,9 +285,6 @@ export default function App() {
                   {/* 24-Hour Sparkline & Hourly Forecast */}
                   <HourlyTrendChart hourlyForecast={airData.hourlyForecast} />
 
-                  {/* AdMob In-Feed Native Card (Strict Policy Compliant) */}
-                  <AdMobNativeCard />
-
                   {/* Criteria Pollutants Grid (PM2.5, PM10, O3, NO2, SO2, CO) */}
                   <PollutantsGrid pollutants={airData.pollutants} />
 
@@ -340,24 +316,9 @@ export default function App() {
                 <div className="space-y-4 animate-in fade-in duration-150">
                   <DailyForecastView
                     dailyForecast={airData.dailyForecast}
-                    isExtendedUnlocked={isExtendedUnlocked}
-                    onUnlockExtended={() => setIsRewardedOpen(true)}
                   />
 
                   <HourlyTrendChart hourlyForecast={airData.hourlyForecast} />
-
-                  {/* Interstitial Ad Demo Trigger */}
-                  <div className="p-4 rounded-2xl bg-slate-900/60 border border-slate-800/80 text-xs text-center space-y-2">
-                    <p className="text-slate-300">
-                      Want to inspect the AdMob Interstitial Ad compliance flow?
-                    </p>
-                    <button
-                      onClick={() => setIsInterstitialOpen(true)}
-                      className="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold border border-slate-700 transition"
-                    >
-                      Preview AdMob Interstitial (5s Safe Countdown)
-                    </button>
-                  </div>
                 </div>
               )}
 
@@ -392,11 +353,6 @@ export default function App() {
             </>
           )}
         </main>
-
-        {/* AdMob Policy-Compliant Bottom Anchor Banner */}
-        <div className="sticky bottom-[58px] z-20">
-          <AdMobBanner onOpenPolicy={() => setIsPolicyInspectorOpen(true)} />
-        </div>
 
         {/* Android Material 3 Bottom Navigation Bar */}
         <nav
@@ -452,7 +408,7 @@ export default function App() {
           </button>
         </nav>
 
-        {/* Modals and Ad Units */}
+        {/* Location Selector Modal */}
         <LocationSelectorModal
           isOpen={isLocationModalOpen}
           onClose={() => setIsLocationModalOpen(false)}
@@ -461,24 +417,6 @@ export default function App() {
           onUseGps={handleUseGps}
           isDetectingGps={isDetectingGps}
           gpsError={gpsError}
-        />
-
-        <AdMobPolicyInspector
-          isOpen={isPolicyInspectorOpen}
-          onClose={() => setIsPolicyInspectorOpen(false)}
-          onTriggerInterstitial={() => setIsInterstitialOpen(true)}
-          onTriggerRewarded={() => setIsRewardedOpen(true)}
-        />
-
-        <AdMobInterstitial
-          isOpen={isInterstitialOpen}
-          onClose={() => setIsInterstitialOpen(false)}
-        />
-
-        <AdMobRewarded
-          isOpen={isRewardedOpen}
-          onClose={() => setIsRewardedOpen(false)}
-          onRewardGranted={() => setIsExtendedUnlocked(true)}
         />
       </div>
     </AndroidFrame>
